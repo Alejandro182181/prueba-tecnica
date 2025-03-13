@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+        .result {
+            font-size: 2vw;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        let a = prompt("Type the first list (enter digits like 122223)").split("").map(Number);  
+        let b = prompt("Type the second list (this will be removed from the first)").split(" ").map(Number);
+
+        function arrayDiff(a, b) {
+            return a.filter(element => !b.includes(element));
+        }
+
+        // Resultado en la consola
+        let result = arrayDiff(a, b);
+        console.log("Result:", result);
+        console.log("First list was: ", a);      
+        console.log("Second list was: ", b);
+
+        // Mostrar el resultado en el centro de la pantalla
+        document.getElementById('result').textContent = "Result: " + result.join(", ");
+    </script>
+</body>
+</html>
