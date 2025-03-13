@@ -42,11 +42,18 @@
 
     <script>
         function parseInput(input) {
-            
-            return input.includes(",") ? input.split(",") : input.split("");
+            let elements = input.includes(",") ? input.split(",") : input.split("");
+
+            // Convertir todas las letras a minúsculas y validar que solo haya letras
+            if (!elements.every(char => /^[a-zA-Z]$/.test(char))) {
+                return null; // Retorna null si hay caracteres no válidos
+            }
+
+            return elements.map(char => char.toLowerCase()); // Convierte todo a minúsculas
         }
 
-        let array = parseInput(prompt("Type a sequence of abc letters (e.g., abcde or a,b,c,e)"));
+        let userInput = prompt("Type a sequence of abc letters (e.g., abcde or a,b,c,e)");
+        let array = parseInput(userInput);
 
         function isSorted(array) {
             for (let i = 0; i < array.length - 1; i++) {
@@ -67,18 +74,19 @@
                 let nextCharCode = array[i + 1].charCodeAt(0);
                 
                 if (nextCharCode !== currentCharCode + 1) {
-                    return String.fromCharCode(currentCharCode + 1);
+                    return `Missing letter: ${String.fromCharCode(currentCharCode + 1)}`;
                 }
             }
 
             return "No missing letter";
         }
 
-        let missingLetter = findMissingLetter(array);
-        
-        console.log("Missing letter:", missingLetter);
-        document.getElementById('result').textContent = "Missing letter: " + missingLetter;
+        let resultText = array ? findMissingLetter(array) : "Error: Only letters (A-Z) are allowed!";
+
+        console.log(resultText);
+        document.getElementById('result').textContent = resultText;
     </script>
 
 </body>
+
 </html>

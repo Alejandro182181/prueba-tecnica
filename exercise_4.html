@@ -46,18 +46,20 @@
     <script>
         function parseInput(input) {
            
-            return input.includes(",") ? input.split(",").map(Number) : input.split("").map(Number);
+            let elements = input.includes(",") ? input.split(",") : input.split("");
+    
+            return elements.map(item => isNaN(item) ? item : Number(item));
         }
     
-        let a = parseInput(prompt("Type the first list (enter digits like 122223 or comma-separated: 1,2,2,2,2,3)"));
-        let b = parseInput(prompt("Type the second list (this will be removed from the first, can be comma-separated)"));
+        let a = parseInput(prompt("Type the first list (e.g., 122223, 1,2,3 or a,b,c,d)"));
+        let b = parseInput(prompt("Type the second list (this will be removed from the first, can be numbers or letters)"));
     
         function arrayDiff(a, b) {
             return a.filter(element => !b.includes(element));
         }
     
         let result = arrayDiff(a, b);
-        
+    
         console.log("First list was: ", a);      
         console.log("Deleted values: ", b);
         console.log("Result:", result);
@@ -66,6 +68,7 @@
         document.getElementById('secondList').textContent = "Deleted values: " + b.join(", ");
         document.getElementById('result').textContent = "Result: " + result.join(", ");
     </script>
+    
     
     
 </body>
