@@ -9,7 +9,7 @@
         body {
             height: 100vh;
             display: flex;
-            flex-direction: column; /* Esto alinea los elementos en columna */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0;
@@ -23,7 +23,7 @@
         }
 
         button {
-            background-color: #4CAF50; /* Verde brillante */
+            background-color: #4CAF50;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -44,8 +44,13 @@
     <button onclick="location.reload();">Try again!</button>
 
     <script>
-        let a = prompt("Type the first list (enter digits like 122223)").split("").map(Number);  
-        let b = prompt("Type the second list (this will be removed from the first)").split("").map(Number);
+        function parseInput(input) {
+           
+            return input.includes(",") ? input.split(",").map(Number) : input.split("").map(Number);
+        }
+    
+        let a = parseInput(prompt("Type the first list (enter digits like 122223 or comma-separated: 1,2,2,2,2,3)"));
+        let b = parseInput(prompt("Type the second list (this will be removed from the first, can be comma-separated)"));
     
         function arrayDiff(a, b) {
             return a.filter(element => !b.includes(element));
@@ -61,6 +66,7 @@
         document.getElementById('secondList').textContent = "Deleted values: " + b.join(", ");
         document.getElementById('result').textContent = "Result: " + result.join(", ");
     </script>
+    
     
 </body>
 </html>
