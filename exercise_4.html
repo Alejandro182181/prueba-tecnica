@@ -16,7 +16,7 @@
             font-family: 'Montserrat', sans-serif;
             text-align: center;
         }
-        .result, .firtsList, .secondList {
+        .result, .firstList, .secondList {
             font-size: 2vw;
             font-weight: bold;
             margin: 10px 0;
@@ -38,7 +38,7 @@
 <body>
 
     
-    <div id="firtsList" class="firtsList"></div>
+    <div id="firstList" class="firstList"></div>
     <div id="secondList" class="secondList"></div>
     <div id="result" class="result"></div>
     <button onclick="location.reload();">Try again!</button>
@@ -64,7 +64,7 @@
         console.log("Deleted values: ", b);
         console.log("Result:", result);
     
-        document.getElementById('firtsList').textContent = "The first list was: " + a.join(", ");
+        document.getElementById('firstList').textContent = "The first list was: " + a.join(", ");
         document.getElementById('secondList').textContent = "Deleted values: " + b.join(", ");
         document.getElementById('result').textContent = "Result: " + result.join(", ");
     </script>
