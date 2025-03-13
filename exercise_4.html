@@ -9,38 +9,58 @@
         body {
             height: 100vh;
             display: flex;
+            flex-direction: column; /* Esto alinea los elementos en columna */
             justify-content: center;
             align-items: center;
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             text-align: center;
         }
-        .result {
+        .result, .firtsList, .secondList {
             font-size: 2vw;
             font-weight: bold;
+            margin: 10px 0;
         }
-    </style>
+
+        button {
+            background-color: #4CAF50; /* Verde brillante */
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+    </style>    
 </head>
 <body>
 
+    
+    <div id="firtsList" class="firtsList"></div>
+    <div id="secondList" class="secondList"></div>
     <div id="result" class="result"></div>
+    <button onclick="location.reload();">Try again!</button>
 
     <script>
         let a = prompt("Type the first list (enter digits like 122223)").split("").map(Number);  
-        let b = prompt("Type the second list (this will be removed from the first)").split(" ").map(Number);
-
+        let b = prompt("Type the second list (this will be removed from the first)").split("").map(Number);
+    
         function arrayDiff(a, b) {
             return a.filter(element => !b.includes(element));
         }
-
-        // Resultado en la consola
+    
         let result = arrayDiff(a, b);
-        console.log("Result:", result);
+        
         console.log("First list was: ", a);      
-        console.log("Second list was: ", b);
-
-        // Mostrar el resultado en el centro de la pantalla
+        console.log("Deleted values: ", b);
+        console.log("Result:", result);
+    
+        document.getElementById('firtsList').textContent = "The first list was: " + a.join(", ");
+        document.getElementById('secondList').textContent = "Deleted values: " + b.join(", ");
         document.getElementById('result').textContent = "Result: " + result.join(", ");
     </script>
+    
 </body>
 </html>

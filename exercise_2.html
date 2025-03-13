@@ -31,13 +31,27 @@
             border: none;
             font-size: 2vw;
         }
+
+        button {
+            background-color: #4CAF50; /* Verde brillante */
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
     <label>Result:</label>
     <input type="text" id="resultInput" readonly>
+    <button onclick="location.reload();">Try again!</button>
 
+    
     <script>
         let num = parseInt(prompt("Type a number"), 10);
 
